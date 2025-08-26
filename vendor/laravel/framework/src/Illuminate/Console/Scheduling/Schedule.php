@@ -18,9 +18,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\ProcessUtils;
 use Illuminate\Support\Traits\Macroable;
 use RuntimeException;
-use Symfony\Component\Console\Command\Command as SymfonyCommand;
-
-use function Illuminate\Support\enum_value;
 
 /**
  * @mixin \Illuminate\Console\Scheduling\PendingEventAttributes
@@ -105,6 +102,7 @@ class Schedule
      * Create a new schedule instance.
      *
      * @param  \DateTimeZone|string|null  $timezone
+     * @return void
      *
      * @throws \RuntimeException
      */
@@ -121,12 +119,12 @@ class Schedule
         $container = Container::getInstance();
 
         $this->eventMutex = $container->bound(EventMutex::class)
-            ? $container->make(EventMutex::class)
-            : $container->make(CacheEventMutex::class);
+                                ? $container->make(EventMutex::class)
+                                : $container->make(CacheEventMutex::class);
 
         $this->schedulingMutex = $container->bound(SchedulingMutex::class)
-            ? $container->make(SchedulingMutex::class)
-            : $container->make(CacheSchedulingMutex::class);
+                                ? $container->make(SchedulingMutex::class)
+                                : $container->make(CacheSchedulingMutex::class);
     }
 
     /**
@@ -150,22 +148,12 @@ class Schedule
     /**
      * Add a new Artisan command event to the schedule.
      *
-     * @param  \Symfony\Component\Console\Command\Command|string  $command
+     * @param  string  $command
      * @param  array  $parameters
      * @return \Illuminate\Console\Scheduling\Event
      */
     public function command($command, array $parameters = [])
     {
-        if ($command instanceof SymfonyCommand) {
-            $command = get_class($command);
-
-            $command = Container::getInstance()->make($command);
-
-            return $this->exec(
-                Application::formatCommandString($command->getName()), $parameters,
-            )->description($command->getDescription());
-        }
-
         if (class_exists($command)) {
             $command = Container::getInstance()->make($command);
 
@@ -183,16 +171,13 @@ class Schedule
      * Add a new job callback event to the schedule.
      *
      * @param  object|string  $job
-     * @param  \UnitEnum|string|null  $queue
-     * @param  \UnitEnum|string|null  $connection
+     * @param  string|null  $queue
+     * @param  string|null  $connection
      * @return \Illuminate\Console\Scheduling\CallbackEvent
      */
     public function job($job, $queue = null, $connection = null)
     {
         $jobName = $job;
-
-        $queue = enum_value($queue);
-        $connection = enum_value($connection);
 
         if (! is_string($job)) {
             $jobName = method_exists($job, 'displayName')

@@ -4,7 +4,7 @@ namespace Illuminate\Support;
 
 use Illuminate\Support\Defer\DeferredCallback;
 use Illuminate\Support\Defer\DeferredCallbackCollection;
-use Symfony\Component\Process\PhpExecutableFinder;
+use Illuminate\Support\Process\PhpExecutableFinder;
 
 if (! function_exists('Illuminate\Support\defer')) {
     /**
@@ -13,7 +13,7 @@ if (! function_exists('Illuminate\Support\defer')) {
      * @param  callable|null  $callback
      * @param  string|null  $name
      * @param  bool  $always
-     * @return ($callback is null ? \Illuminate\Support\Defer\DeferredCallbackCollection : \Illuminate\Support\Defer\DeferredCallback)
+     * @return \Illuminate\Support\Defer\DeferredCallback
      */
     function defer(?callable $callback = null, ?string $name = null, bool $always = false)
     {
