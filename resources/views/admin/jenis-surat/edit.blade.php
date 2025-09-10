@@ -1,39 +1,102 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', 'Edit Jenis Surat - Admin SKPD')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Edit Jenis Surat</h5>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('admin.jenis-surat.update', $jenisSurat->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        
-                        <div class="mb-3">
-                            <label for="nama_surat" class="form-label">Nama Jenis Surat</label>
-                            <input type="text" class="form-control @error('nama_surat') is-invalid @enderror" 
-                                   id="nama_surat" name="nama_surat" value="{{ old('nama_surat', $jenisSurat->nama_surat) }}" required>
-                            @error('nama_surat')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card admin-card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-edit me-2"></i>Edit Jenis Surat
+                </h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('admin.jenis-surat.update', $jenisSurat->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    
+                    <div class="mb-4">
+                        <label for="nama_surat" class="form-label fw-semibold">
+                            <i class="fas fa-file-alt me-1"></i>Nama Jenis Surat
+                        </label>
+                        <input type="text" 
+                               class="form-control form-control-admin @error('nama_surat') is-invalid @enderror" 
+                               id="nama_surat" 
+                               name="nama_surat" 
+                               value="{{ old('nama_surat', $jenisSurat->nama_surat) }}" 
+                               placeholder="Masukkan nama jenis surat"
+                               required>
+                        @error('nama_surat')
+                            <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-circle me-1"></i>{{ $message }}
+                            </div>
+                        @enderror
+                    </div>
 
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ route('admin.jenis-surat.index') }}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Kembali
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Update
-                            </button>
+                    <div class="mb-4">
+                        <label for="deskripsi" class="form-label fw-semibold">
+                            <i class="fas fa-align-left me-1"></i>Deskripsi
+                        </label>
+                        <textarea class="form-control form-control-admin @error('deskripsi') is-invalid @enderror" 
+                                  id="deskripsi" 
+                                  name="deskripsi" 
+                                  rows="3" 
+                                  placeholder="Masukkan deskripsi jenis surat">{{ old('deskripsi', $jenisSurat->deskripsi) }}</textarea>
+                        @error('deskripsi')
+                            <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-circle me-1"></i>{{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="persyaratan" class="form-label fw-semibold">
+                            <i class="fas fa-list me-1"></i>Persyaratan
+                        </label>
+                        <textarea class="form-control form-control-admin @error('persyaratan') is-invalid @enderror" 
+                                  id="persyaratan" 
+                                  name="persyaratan" 
+                                  rows="4" 
+                                  placeholder="Masukkan persyaratan (pisahkan dengan koma)">{{ old('persyaratan', $jenisSurat->persyaratan) }}</textarea>
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Pisahkan setiap persyaratan dengan koma (,)
                         </div>
-                    </form>
-                </div>
+                        @error('persyaratan')
+                            <div class="invalid-feedback">
+                                <i class="fas fa-exclamation-circle me-1"></i>{{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" 
+                                   type="checkbox" 
+                                   id="aktif" 
+                                   name="aktif" 
+                                   value="1" 
+                                   {{ old('aktif', $jenisSurat->aktif) ? 'checked' : '' }}>
+                            <label class="form-check-label fw-semibold" for="aktif">
+                                <i class="fas fa-toggle-on me-1"></i>Status Aktif
+                            </label>
+                        </div>
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Jenis surat yang aktif akan ditampilkan di halaman pengajuan
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('admin.jenis-surat.index') }}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Kembali
+                        </a>
+                        <button type="submit" class="btn btn-admin-primary">
+                            <i class="fas fa-save me-2"></i>Update Jenis Surat
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

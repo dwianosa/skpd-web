@@ -12,6 +12,8 @@ class JenisSurat extends Model
     
     protected $fillable = [
         'nama_surat',
+        'deskripsi',
+        'persyaratan',
         'aktif'
     ];
 

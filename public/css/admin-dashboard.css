@@ -1,179 +1,200 @@
-/* Admin Dashboard Custom CSS */
-
-/* Card styling */
-.card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-    transition: all 0.3s ease;
+/* Admin Dashboard Styles */
+.admin-header {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0.75rem 0;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
-}
-
-.card-header {
-    border-radius: 15px 15px 0 0 !important;
-    border-bottom: none;
-    font-weight: 600;
-}
-
-/* Statistik cards */
-.border-left-primary {
-    border-left: 0.25rem solid #4e73df !important;
-}
-
-.border-left-success {
-    border-left: 0.25rem solid #1cc88a !important;
-}
-
-.border-left-warning {
-    border-left: 0.25rem solid #f6c23e !important;
-}
-
-.border-left-danger {
-    border-left: 0.25rem solid #e74a3b !important;
-}
-
-.text-xs {
-    font-size: 0.7rem;
-}
-
-/* Progress bars */
-.progress {
-    border-radius: 10px;
-    background-color: #eaecf4;
-}
-
-.progress-bar {
-    border-radius: 10px;
-    transition: width 0.6s ease;
-}
-
-/* Table styling */
-.table {
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.table thead th {
-    border-top: none;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-}
-
-.table tbody tr {
-    transition: all 0.2s ease;
-}
-
-.table tbody tr:hover {
-    background-color: #f8f9fc;
-    transform: scale(1.01);
-}
-
-/* Badge styling */
-.badge {
-    font-size: 0.75rem;
-    padding: 0.5em 0.75em;
-    border-radius: 20px;
-}
-
-/* Button styling */
-.btn {
-    border-radius: 10px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-.btn-block {
-    width: 100%;
-    padding: 12px;
-    font-size: 0.9rem;
-}
-
-/* Chart container */
-#chartSurat {
-    border-radius: 10px;
-    background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
-}
-
-/* Quick actions grid */
-.quick-actions .btn {
-    margin-bottom: 15px;
-    height: 60px;
+.admin-logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.quick-actions .btn i {
     font-size: 1.5rem;
-    margin-bottom: 8px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
 }
 
-/* Alert styling */
-.alert {
-    border-radius: 15px;
+.brand-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+}
+
+.brand-subtitle {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.admin-main {
+    background-color: #f8f9fa;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
+}
+
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white !important;
+}
+
+.navbar-nav .nav-link i {
+    margin-right: 0.5rem;
+}
+
+/* Card Styles */
+.admin-card {
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
 }
 
-/* Loading animation */
-.loading-spinner {
-    animation: spin 1s linear infinite;
+.admin-card .card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 0.75rem 0.75rem 0 0 !important;
+    border: none;
+    padding: 1.25rem 1.5rem;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.admin-card .card-header h5 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
-/* Responsive adjustments */
+.admin-card .card-body {
+    padding: 1.5rem;
+}
+
+/* Button Styles */
+.btn-admin-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+.btn-admin-success {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    color: white;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+    color: white;
+}
+
+/* Table Styles */
+.admin-table {
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.admin-table thead {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.admin-table thead th {
+    border: none;
+    font-weight: 600;
+    color: #495057;
+    padding: 1rem;
+}
+
+.admin-table tbody td {
+    border: none;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr {
+    border-bottom: 1px solid #f1f3f4;
+    transition: background-color 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Badge Styles */
+.badge-admin {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+/* Form Styles */
+.form-control-admin {
+    border: 2px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control-admin:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Alert Styles */
+.alert-admin {
+    border: none;
+    border-radius: 0.75rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .card-body {
+    .admin-main {
+        padding: 1rem 0;
+    }
+    
+    .admin-card .card-body {
         padding: 1rem;
     }
     
-    .btn-block {
-        height: 50px;
-        font-size: 0.8rem;
-    }
-    
-    .quick-actions .btn {
-        height: 50px;
-    }
-    
-    .quick-actions .btn i {
-        font-size: 1.2rem;
-        margin-bottom: 5px;
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem;
+        margin: 0.125rem 0;
     }
 }
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .card {
-        background-color: #2d3748;
-        color: #e2e8f0;
-    }
-    
-    .table {
-        background-color: #2d3748;
-        color: #e2e8f0;
-    }
-    
-    .table tbody tr:hover {
-        background-color: #4a5568;
-    }
-}
-
-
-

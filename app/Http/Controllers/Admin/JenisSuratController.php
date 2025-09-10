@@ -23,11 +23,16 @@ class JenisSuratController extends Controller
     {
         $request->validate([
             'nama_surat' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'persyaratan' => 'nullable|string',
+            'aktif' => 'boolean'
         ]);
 
         JenisSurat::create([
             'nama_surat' => $request->nama_surat,
-            'aktif' => true
+            'deskripsi' => $request->deskripsi,
+            'persyaratan' => $request->persyaratan,
+            'aktif' => $request->has('aktif')
         ]);
 
         return redirect()->route('admin.jenis-surat.index')->with('success', 'Jenis surat berhasil ditambahkan');
@@ -42,10 +47,16 @@ class JenisSuratController extends Controller
     {
         $request->validate([
             'nama_surat' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'persyaratan' => 'nullable|string',
+            'aktif' => 'boolean'
         ]);
 
         $jenisSurat->update([
             'nama_surat' => $request->nama_surat,
+            'deskripsi' => $request->deskripsi,
+            'persyaratan' => $request->persyaratan,
+            'aktif' => $request->has('aktif')
         ]);
 
         return redirect()->route('admin.jenis-surat.index')->with('success', 'Jenis surat berhasil diperbarui');
