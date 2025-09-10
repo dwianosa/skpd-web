@@ -41,17 +41,17 @@
                         <tbody>
                             @forelse($jenisSurat as $index => $jenis)
                                 <tr>
-                                    <td class="text-center fw-bold">{{ $index + 1 }}</td>
+                                    <td class="text-center fw-bold">{{ $jenisSurat->firstItem() + $index }}</td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <div class="me-3">
-                                                <i class="fas fa-file-alt text-primary"></i>
+                                            <div class="me-2">
+                                                <i class="fas fa-file-alt text-primary" style="font-size: 0.875rem;"></i>
                                             </div>
                                             <div>
-                                                <div class="fw-semibold">{{ $jenis->nama_surat }}</div>
+                                                <div class="fw-semibold" style="font-size: 0.875rem;">{{ $jenis->nama_surat }}</div>
                                                 @if($jenis->persyaratan)
-                                                    <small class="text-muted">
-                                                        <i class="fas fa-info-circle me-1"></i>
+                                                    <small class="text-muted" style="font-size: 0.75rem;">
+                                                        <i class="fas fa-info-circle me-1" style="font-size: 0.7rem;"></i>
                                                         {{ Str::limit($jenis->persyaratan, 50) }}
                                                     </small>
                                                 @endif
@@ -59,18 +59,18 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="text-muted">
+                                        <span class="text-muted" style="font-size: 0.8rem;">
                                             {{ Str::limit($jenis->deskripsi, 60) }}
                                         </span>
                                     </td>
                                     <td>
                                         @if($jenis->aktif)
                                             <span class="badge badge-admin bg-success">
-                                                <i class="fas fa-check-circle me-1"></i>Aktif
+                                                <i class="fas fa-check-circle me-1" style="font-size: 0.7rem;"></i>Aktif
                                             </span>
                                         @else
                                             <span class="badge badge-admin bg-danger">
-                                                <i class="fas fa-times-circle me-1"></i>Tidak Aktif
+                                                <i class="fas fa-times-circle me-1" style="font-size: 0.7rem;"></i>Tidak Aktif
                                             </span>
                                         @endif
                                     </td>
@@ -111,12 +111,11 @@
                     </table>
                 </div>
 
-                @if($jenisSurat->count() > 0)
-                    <div class="mt-3">
-                        <small class="text-muted">
-                            <i class="fas fa-info-circle me-1"></i>
-                            Menampilkan {{ $jenisSurat->count() }} jenis surat
-                        </small>
+                @if($jenisSurat->hasPages())
+                    <div class="d-flex justify-content-center mt-3">
+                        <div class="pagination-wrapper">
+                            {{ $jenisSurat->appends(request()->query())->links('pagination.bootstrap-4-custom') }}
+                        </div>
                     </div>
                 @endif
             </div>

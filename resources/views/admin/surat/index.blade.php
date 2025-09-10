@@ -146,7 +146,7 @@ body {
                                 <tbody>
                                     @foreach($surat as $index => $item)
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $surat->firstItem() + $index }}</td>
                                         <td>
                                             <strong>{{ $item->nomor_surat }}</strong>
                                         </td>
@@ -202,7 +202,7 @@ body {
 
                         <!-- Pagination -->
                         <div class="d-flex justify-content-center mt-4">
-                            {{ $surat->links() }}
+                            {{ $surat->links('pagination.bootstrap-4-custom') }}
                         </div>
                     @else
                         <div class="text-center py-5">

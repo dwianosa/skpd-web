@@ -10,7 +10,7 @@ class JenisSuratController extends Controller
 {
     public function index()
     {
-        $jenisSurat = JenisSurat::all();
+        $jenisSurat = JenisSurat::paginate(10);
         return view('admin.jenis-surat.index', compact('jenisSurat'));
     }
 
